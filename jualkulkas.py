@@ -187,8 +187,13 @@ else:
 # STRUK
 # ============================
 print(Back.WHITE + "")
-print(Fore.YELLOW + "\n===================== ELEKTRONIK KITA ======================")
-print(f"Tanggal : {tgl}                               {jam_pesan} ")
+print("="*70)
+print("                          ELEKTRONIK KITA                             ")
+print("="*70)
+print(f"{tgl}                                                    {jam_pesan} ")
+print("jl. Mawar, Bekasi Utara")
+print("08123456789")
+
 print("\nNama Penerima :", nama)
 print("Alamat        :", alamat)
 print("No HP         :", tlp)
@@ -202,12 +207,12 @@ for item in keranjang:
     no += 1
 
 print("-"*60)
-print(f"Diskon       : Rp {diskon:,.0f}")
-print(f"Total Bayar  : Rp {total_bayar:,.0f}")
-print(f"Ongkir       : Rp {ongkir:,.0f}")
-print(f"Total Akhir  : Rp {total_akhir:,.0f}")
-print(f"Bayar        : Rp{bayar:,.0f}")
-print(f"Kembalian    : Rp{kembalian:,.0f}")
+print(f"Diskon                 : Rp {diskon:,.0f}")
+print(f"Total Bayar            : Rp {total_bayar:,.0f}")
+print(f"Ongkir                 : Rp {ongkir:,.0f}")
+print(f"Total Akhir            : Rp {total_akhir:,.0f}")
+print(f"Bayar                  : Rp{bayar:,.0f}")
+print(f"Kembalian              : Rp{kembalian:,.0f}")
 print(f"GARANSI BERLAKU SAMPAI : {tgl_garansi}")
 print("\n                       TERIMA KASIH")
 print(Style.RESET_ALL)
