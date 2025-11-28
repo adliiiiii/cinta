@@ -199,7 +199,7 @@ print(f"Total Akhir  : Rp {total_akhir:,.0f}")
 print(f"Uang Anda    : Rp.{bayar:,.0f}")
 print(f"Kembalian    : Rp.{kembalian:,.0f}")
 print("\n                       TERIMA KASIH")
-print(f"PERHATIAN! MASA GARANSI ANDA BERLAKU 2 TAHUN, MAKA TANGGAL KADALUARSA GARANSI ANDA : {tgl_garansi}")
+print(f"PERHATIAN! MASA GARANSI ANDA BERLAKU SAMPAI : {tgl_garansi}")
 print(Style.RESET_ALL)
 
 
