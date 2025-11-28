@@ -1,6 +1,5 @@
 import time
-from datetime import timedelta
-from datetime import date
+from datetime import datetime, date, timedelta
 from colorama import Fore, Style, Back
 
 produk = {
@@ -24,9 +23,6 @@ kurir = {
     2: "Kurir Instan",
     3: "Kurir Reguler",
 }
-
-
-
 
 keranjang = []
 
@@ -109,29 +105,43 @@ for i in kurir:
     print(f"{i:<3}| {kurir[i]}")
 print("-"*60)
 
+# Waktu pemesanan
+waktu_pesan = datetime.now()         
+tgl = waktu_pesan.date()             
+jam_pesan = waktu_pesan.strftime("%H:%M:%S") 
+
+# Garansi 2 tahun
+tgl_garansi = tgl.replace(year = tgl.year + 2)
+
 pilih_kirim = int(input("Pilih metode pengantaran: "))
 
 if pilih_kirim == 1:
     metode_kirim = "Ambil di Toko"
     ongkir = 0
     estimasi = "Langsung Bisa Diambil"
+    waktu_sampai = "-"
+
 elif pilih_kirim == 2:
     metode_kirim = "Kurir Instan"
     ongkir = 70000
     estimasi = "Dikirim Langsung"
+
 elif pilih_kirim == 3:
     metode_kirim = "Kurir Reguler"
     ongkir = 40000
     estimasi = "Tiba ± 5 Jam"
+
 else:
     metode_kirim = "Ambil di Toko"
     ongkir = 0
     estimasi = "Langsung Bisa Diambil"
+    waktu_sampai = "-"
 
 total_bayar = total_barang - diskon
 total_akhir = total_bayar + ongkir
 
-
+print("-"*60)
+print(f"Waktu Pemesanan : {tgl} {jam_pesan}")
 print("-"*60)
 print(f"Jumlah Bayar  : Rp {total_barang:,.0f}")
 print(f"Diskon {persen:<4}   : Rp {diskon:,.0f}")
@@ -143,8 +153,6 @@ print("-"*60)
 # ============================
 # LOADING
 # ============================
-tgl = date.today()
-tgl_garansi = tgl.replace(year = tgl.year + 2)
 for i in range(1, 11):
     print(f"Loading: {i*10}%", end="\r")
     time.sleep(0.2)
@@ -166,19 +174,21 @@ if konfir.lower() == "y":
             print("\nPembayaran Berhasil!")
             print(f"Anda Membayar Sebesar Rp.{bayar:,.0f}")
             print("Uang Anda Pas")
+            kembalian = 0
             break
 
         else:
             print("Uang Anda Kurang! Silakan masukan ulang.")
 else:
     print("\nPembayaran dibatalkan")
+    exit()
 
 # ============================
 # STRUK
 # ============================
 print(Back.WHITE + "")
 print(Fore.YELLOW + "\n===================== ELEKTRONIK KITA ======================")
-print(tgl)
+print(f"Tanggal : {tgl}                               {jam_pesan} ")
 print("\nNama Penerima :", nama)
 print("Alamat        :", alamat)
 print("No HP         :", tlp)
@@ -196,11 +206,8 @@ print(f"Diskon       : Rp {diskon:,.0f}")
 print(f"Total Bayar  : Rp {total_bayar:,.0f}")
 print(f"Ongkir       : Rp {ongkir:,.0f}")
 print(f"Total Akhir  : Rp {total_akhir:,.0f}")
-print(f"Uang Anda    : Rp.{bayar:,.0f}")
-print(f"Kembalian    : Rp.{kembalian:,.0f}")
+print(f"Bayar        : Rp{bayar:,.0f}")
+print(f"Kembalian    : Rp{kembalian:,.0f}")
+print(f"GARANSI BERLAKU SAMPAI : {tgl_garansi}")
 print("\n                       TERIMA KASIH")
-print(f"PERHATIAN! MASA GARANSI ANDA BERLAKU SAMPAI : {tgl_garansi}")
 print(Style.RESET_ALL)
-
-
-
