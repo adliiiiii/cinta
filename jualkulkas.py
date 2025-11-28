@@ -18,13 +18,6 @@ harga = {
     5: 2000000,
 }
 
-metode_pembayaran = {
-    1: "Transfer Bank",
-    2: "Virtual Account",
-    3: "Debit",
-    4: "Tunai",
-}
-
 kurir = {
     1: "Ambil di toko",
     2: "Kurir Instan",
@@ -134,20 +127,6 @@ else:
 total_bayar = total_barang - diskon
 total_akhir = total_bayar + ongkir
 
-# ============================
-# METODE PEMBAYARAN
-# ============================
-print("\n============================================================")
-print("                      Metode Pembayaran                     ")
-print("="*60)
-print("Id | Metode Pembayaran")
-print("-"*60)
-
-for i in metode_pembayaran:
-    print(f"{i:<3}| {metode_pembayaran[i]}")
-print("-"*60)
-
-pmetode = int(input("Pilih Id metode pembayaran: "))
 
 print("-"*60)
 print(f"Jumlah Bayar  : Rp {total_barang:,.0f}")
@@ -198,7 +177,6 @@ print(tgl)
 print("\nNama Penerima :", nama)
 print("Alamat        :", alamat)
 print("No HP         :", tlp)
-print("Metode Bayar  :", metode_pembayaran[pmetode])
 print("Pengantaran   :", metode_kirim)
 print("Estimasi      :", estimasi)
 print("-"*60)
@@ -213,8 +191,8 @@ print(f"Diskon       : Rp {diskon:,.0f}")
 print(f"Total Bayar  : Rp {total_bayar:,.0f}")
 print(f"Ongkir       : Rp {ongkir:,.0f}")
 print(f"Total Akhir  : Rp {total_akhir:,.0f}")
-print(f"Uang Anda : Rp.{bayar:,.0f}")
-print(f"Kembalian : Rp.{kembalian:,.0f}")
+print(f"Uang Anda    : Rp.{bayar:,.0f}")
+print(f"Kembalian    : Rp.{kembalian:,.0f}")
 print("\n                       TERIMA KASIH")
 print(Style.RESET_ALL)
 
