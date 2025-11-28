@@ -25,6 +25,47 @@ kurir = {
 }
 
 keranjang = []
+data = []   
+
+def masukan_user():
+    user = input("Masukan User : ")
+    pw = input("Masukan Password : ")
+
+    if [user, pw] in data:
+        print("Login Berhasil!\n")
+        return True
+    else:
+        print("Akun tidak ditemukan!\n")
+        return False
+        
+
+def buat_akun():
+    user = input("Masukan User : ")
+    pw = input("Masukan Password : ")
+    konfirmasi = input("Konfirmasi Password : ")
+
+    while konfirmasi != pw:
+        print("Password tidak sama, coba lagi!")
+        konfirmasi = input("Konfirmasi Password : ")
+
+    data.append([user, pw])
+    print("Akun berhasil dibuat!\n")
+
+while True:
+    akun = input("Sudah Punya Akun [Y/N] : ").lower()
+
+    if akun == "y":
+        if masukan_user():   
+            break
+
+    elif akun == "n":
+        buat_akun()
+        print("Silakan login kembali.\n")  
+
+    else:
+        print("Pilihan tidak valid!\n")
+
+
 
 print("="*70)
 print("                          ELEKTRONIK KITA                             ")
@@ -174,6 +215,7 @@ else:
 print(Back.WHITE + "")
 print(Fore.YELLOW + "\n===================== ELEKTRONIK KITA ======================")
 print(tgl)
+print(f"Nama Pengguna : {akun[0]}")
 print("\nNama Penerima :", nama)
 print("Alamat        :", alamat)
 print("No HP         :", tlp)
@@ -195,6 +237,36 @@ print(f"Uang Anda    : Rp.{bayar:,.0f}")
 print(f"Kembalian    : Rp.{kembalian:,.0f}")
 print("\n                       TERIMA KASIH")
 print(Style.RESET_ALL)
+
+# ============================
+# CETAK STRUK KE FILE
+# ============================
+with open("riwayat.txt", "w", encoding="utf-8") as s:
+    s.write("===================== ELEKTRONIK KITA ======================\n")
+    s.write(f"{tgl}\n\n")
+    s.write(f"Nama Pengguna : {akun[0]}")
+    s.write(f"Nama Penerima : {nama}\n")
+    s.write(f"Alamat        : {alamat}\n")
+    s.write(f"No HP         : {tlp}\n")
+    s.write(f"Pengantaran   : {metode_kirim}\n")
+    s.write(f"Estimasi      : {estimasi}\n")
+    s.write("------------------------------------------------------------\n")
+
+    no = 1
+    for item in keranjang:
+        subtotal = item['harga'] * item['jumlah']
+        s.write(f"{no}. {item['produk']} x{item['jumlah']} = Rp {subtotal:,}\n")
+        no += 1
+
+    s.write("------------------------------------------------------------\n")
+    s.write(f"Diskon       : Rp {diskon:,}\n")
+    s.write(f"Total Bayar  : Rp {total_bayar:,}\n")
+    s.write(f"Ongkir       : Rp {ongkir:,}\n")
+    s.write(f"Total Akhir  : Rp {total_akhir:,}\n")
+    s.write(f"Uang Anda    : Rp {bayar:,}\n")
+    s.write(f"Kembalian    : Rp {kembalian:,}\n")
+    s.write("\n                     TERIMA KASIH\n")
+
 
 
 
