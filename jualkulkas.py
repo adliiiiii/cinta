@@ -165,6 +165,30 @@ for i in range(1, 11):
     print(f"Loading: {i*10}%", end="\r")
     time.sleep(0.2)
 
+konfir = input("\nApakah anda yakin ingin melakukan pembayaran? (Y/N): ")
+
+if konfir.lower() == "y":
+    while True:
+        bayar = int(input("Masukan Jumlah Bayar : "))
+
+        if bayar > total_akhir:
+            kembalian = bayar - total_akhir
+            print("\nPembayaran Berhasil!")
+            print(f"Anda Membayar Sebesar Rp.{bayar:,.0f}")
+            print(f"Kembalian Anda : Rp.{kembalian:,.0f}")
+            break
+
+        elif bayar == total_akhir:
+            print("\nPembayaran Berhasil!")
+            print(f"Anda Membayar Sebesar Rp.{bayar:,.0f}")
+            print("Uang Anda Pas")
+            break
+
+        else:
+            print("Uang Anda Kurang! Silakan masukan ulang.")
+else:
+    print("\nPembayaran dibatalkan")
+
 # ============================
 # STRUK
 # ============================
@@ -189,30 +213,10 @@ print(f"Diskon       : Rp {diskon:,.0f}")
 print(f"Total Bayar  : Rp {total_bayar:,.0f}")
 print(f"Ongkir       : Rp {ongkir:,.0f}")
 print(f"Total Akhir  : Rp {total_akhir:,.0f}")
+print(f"Uang Anda : Rp.{bayar:,.0f}")
+print(f"Kembalian : Rp.{kembalian:,.0f}")
 print("\n                       TERIMA KASIH")
 print(Style.RESET_ALL)
 
-konfir = input("\nApakah anda yakin ingin melakukan pembayaran? (Y/N): ")
 
-if konfir.lower() == "y":
-    while True:
-        bayar = int(input("Masukan Jumlah Bayar : "))
-
-        if bayar > total_akhir:
-            kembalian = bayar - total_akhir
-            print("\nPembayaran Berhasil!")
-            print(f"Anda Membayar Sebesar Rp.{bayar:,.0f}")
-            print(f"Kembalian Anda : Rp.{kembalian:,.0f}")
-            break
-
-        elif bayar == total_akhir:
-            print("\nPembayaran Berhasil!")
-            print(f"Anda Membayar Sebesar Rp.{bayar:,.0f}")
-            print("Uang Anda Pas")
-            break
-
-        else:
-            print("Uang Anda Kurang! Silakan masukan ulang.")
-else:
-    print("\nPembayaran dibatalkan")
 
