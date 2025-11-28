@@ -1,4 +1,5 @@
 import time
+from datetime import timedelta
 from datetime import date
 from colorama import Fore, Style, Back
 
@@ -23,6 +24,9 @@ kurir = {
     2: "Kurir Instan",
     3: "Kurir Reguler",
 }
+
+
+
 
 keranjang = []
 
@@ -140,6 +144,7 @@ print("-"*60)
 # LOADING
 # ============================
 tgl = date.today()
+tgl_garansi = tgl.replace(year = tgl.year + 2)
 for i in range(1, 11):
     print(f"Loading: {i*10}%", end="\r")
     time.sleep(0.2)
@@ -194,6 +199,7 @@ print(f"Total Akhir  : Rp {total_akhir:,.0f}")
 print(f"Uang Anda    : Rp.{bayar:,.0f}")
 print(f"Kembalian    : Rp.{kembalian:,.0f}")
 print("\n                       TERIMA KASIH")
+print(f"PERHATIAN! MASA GARANSI ANDA BERLAKU 2 TAHUN, MAKA TANGGAL KADALUARSA GARANSI ANDA : {tgl_garansi}")
 print(Style.RESET_ALL)
 
 
